@@ -26,9 +26,10 @@ public class DriverSetup {
         // Copy the application (.apk), which will become AUT, to the specified location, e.g. "resources" folder of the project
         File appDir = new File("C:\\Users\\Maksim_Meshcheriakov\\OneDrive - EPAM\\AT trainings\\Mobile\\codeExample\\src\\main\\resources");
         File app = new File(appDir, "EPAMTestApp.apk");
-        capabilities.setCapability("app", app.getAbsolutePath());
+        //capabilities.setCapability("app", app.getAbsolutePath());
 
         capabilities.setCapability("browserName","Chrome");
+        capabilities.setCapability("chromedriverDisableBuildCheck","true");
 
         // Init driver for local Appium server with capabilities have been set
         this.driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);;
