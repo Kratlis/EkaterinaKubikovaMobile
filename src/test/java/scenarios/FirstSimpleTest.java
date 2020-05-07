@@ -16,4 +16,12 @@ public class FirstSimpleTest extends DriverSetup {
         driver.findElement(add_btn).click();
         System.out.println("Simplest Appium test done");
     }
+
+    @Test(description = "Open IANA website")
+    public void webTest() throws InterruptedException {
+        driver.get("http://iana.org");
+        Thread.sleep(5000);
+        System.out.println("Site opening done");
+    }
+
 }
