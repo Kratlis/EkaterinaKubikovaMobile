@@ -24,39 +24,36 @@ public class BaseTest implements IDriver {
         return po;
     }
 
-    /*
-    public BaseTest() {
-
-    }
-
-     */
-
-    @Parameters({"appType"})
+    @Parameters({"platformName","appType","deviceName","browserName","app"})
     @BeforeClass(alwaysRun = true)
-    public void setUp(String appType) {
-    //public void setUp(){
+    public void setUp(String platformName, String appType, String deviceName, @Optional("") String browserName, @Optional("") String app) {
         System.out.println("Before: app type - "+appType);
-        //System.out.println("Before");
-        setAppiumDriver();
+        setAppiumDriver(platformName, deviceName, browserName, app);
         setPageObject(appType);
 
     }
 
+    @Parameters({"platformName"})
     @AfterClass(alwaysRun = true)
-    public void tearDown(){
+    public void tearDown(String platformName) throws Exception {
         System.out.println("After");
-        appiumDriver.close();
+        switch(platformName){
+            case "Android":
+                ((AndroidDriver) appiumDriver).closeApp();
+                break;
+            default: throw new Exception("No proper tear down procedure for platform "+platformName);
+        }
     }
 
-    private void setAppiumDriver(){
+    private void setAppiumDriver(String platformName, String deviceName, String browserName, String app){
         DesiredCapabilities capabilities = new DesiredCapabilities();
         //mandatory Android capabilities
-        capabilities.setCapability("platformName",System.getProperty("ts.platform"));
-        capabilities.setCapability("deviceName",System.getProperty("ts.device"));
+        capabilities.setCapability("platformName",platformName);
+        capabilities.setCapability("deviceName",deviceName);
 
-        if(System.getProperty("ts.app").endsWith(".apk")) capabilities.setCapability("app", (new File(System.getProperty("ts.app"))).getAbsolutePath());
+        if(app.endsWith(".apk")) capabilities.setCapability("app", (new File(app)).getAbsolutePath());
 
-        capabilities.setCapability("browserName", System.getProperty("ts.browser"));
+        capabilities.setCapability("browserName", browserName);
         capabilities.setCapability("chromedriverDisableBuildCheck","true");
 
         try {

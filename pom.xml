@@ -32,11 +32,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.platform>${platform}</ts.platform>
-                        <ts.device>${device}</ts.device>
                         <ts.appium>${appium.server}</ts.appium>
-                        <ts.app>${app}</ts.app>
-                        <ts.browser>${browser}</ts.browser>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -59,8 +55,6 @@
             </activation>
             <properties>
                 <suite.file>src/test/resources/nativeTNG.xml</suite.file>
-                <platform>Android</platform>
-                <app>./src/main/resources/EPAMTestApp.apk</app>
             </properties>
         </profile>
 
@@ -71,14 +65,11 @@
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
-                <browser>Chrome</browser>
             </properties>
         </profile>
     </profiles>
 
     <properties>
-        <platform>Android</platform>
-        <device>emulator-5554</device>
         <appium.server>http://localhost:4723/wd/hub</appium.server>
     </properties>
 
