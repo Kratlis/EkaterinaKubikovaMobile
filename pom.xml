@@ -55,7 +55,7 @@
         <profile>
             <id>native</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>src/test/resources/nativeTNG.xml</suite.file>
@@ -67,10 +67,10 @@
         <profile>
             <id>web</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/webTNG.xml</suite.file>
+                <suite.file>./src/test/resources/webTNG.xml</suite.file>
                 <browser>Chrome</browser>
             </properties>
         </profile>

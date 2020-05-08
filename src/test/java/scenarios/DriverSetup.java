@@ -21,7 +21,9 @@ public class DriverSetup {
         //mandatory Android capabilities
         capabilities.setCapability("platformName",System.getProperty("ts.platform"));
         capabilities.setCapability("deviceName",System.getProperty("ts.device"));
-        capabilities.setCapability("app", (new File(System.getProperty("ts.app"))).getAbsolutePath());
+
+        if(System.getProperty("ts.app").endsWith(".apk")) capabilities.setCapability("app", (new File(System.getProperty("ts.app"))).getAbsolutePath());
+
         capabilities.setCapability("browserName", System.getProperty("ts.browser"));
         capabilities.setCapability("chromedriverDisableBuildCheck","true");
 
