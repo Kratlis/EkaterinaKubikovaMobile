@@ -9,7 +9,7 @@ public class FirstSimpleTest extends DriverSetup {
     public FirstSimpleTest() throws MalformedURLException {
     }
 
-    @Test(description = "This simple test just click on the Sign In button")
+    @Test(groups = {"native"}, description = "This simple test just click on the Sign In button")
     public void simplestTest(){
         String app_package_name = "platkovsky.alexey.epamtestapp:id/";
         By add_btn = By.id(app_package_name + "email_sign_in_button");
@@ -17,7 +17,7 @@ public class FirstSimpleTest extends DriverSetup {
         System.out.println("Simplest Appium test done");
     }
 
-    @Test(description = "Open IANA website")
+    @Test(groups = {"web"}, description = "Open IANA website")
     public void webTest() throws InterruptedException {
         driver.get("http://iana.org");
         Thread.sleep(5000);
