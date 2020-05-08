@@ -24,19 +24,31 @@ public class BaseTest implements IDriver {
         return po;
     }
 
-    //@Parameters({"appType"})
-    //public void setUp(String appType) {
-    //@BeforeSuite
-    public void setUp(){
-        //System.out.println("Before: app type - "+appType);
-        System.out.println("Before");
-        setAppiumDriver();
-        setPageObject("");
+    /*
+    public BaseTest() {
 
     }
 
-    @BeforeClass
-    private void setAppiumDriver() {
+     */
+
+    @Parameters({"appType"})
+    @BeforeClass(alwaysRun = true)
+    public void setUp(String appType) {
+    //public void setUp(){
+        System.out.println("Before: app type - "+appType);
+        //System.out.println("Before");
+        setAppiumDriver();
+        setPageObject(appType);
+
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void tearDown(){
+        System.out.println("After");
+        appiumDriver.close();
+    }
+
+    private void setAppiumDriver(){
         DesiredCapabilities capabilities = new DesiredCapabilities();
         //mandatory Android capabilities
         capabilities.setCapability("platformName",System.getProperty("ts.platform"));
@@ -52,12 +64,7 @@ public class BaseTest implements IDriver {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }
 
-    @AfterClass
-    void tearDown(){
-        System.out.println("After");
-        appiumDriver.close();
     }
 
     private void setPageObject(String appType) {

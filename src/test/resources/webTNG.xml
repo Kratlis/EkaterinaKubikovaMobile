@@ -1,5 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Web mobile testing Suite">
+    <parameter name="appType" value="web"></parameter>
     <test name="Web tests">
         <groups>
             <run>
