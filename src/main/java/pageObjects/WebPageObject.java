@@ -1,10 +1,10 @@
 package pageObjects;
 
-public class WebPageObject extends PageObject {
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-    public WebPageObject(String appType) {
-        super(appType);
+public class WebPageObject  {
+
+
+    public WebPageObject(RemoteWebDriver appiumDriver) {
     }
-
-
 }
