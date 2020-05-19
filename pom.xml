@@ -32,7 +32,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>${appium.server}</ts.appium>
+                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -68,10 +68,6 @@
             </properties>
         </profile>
     </profiles>
-
-    <properties>
-        <appium.server>http://localhost:4723/wd/hub</appium.server>
-    </properties>
 
 
 </project>
