@@ -2,10 +2,7 @@ package setup;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pageObjects.PageObject;
 
 import java.io.File;
@@ -26,7 +23,7 @@ public class BaseTest implements IDriver {
     }
 
     @Parameters({"platformName","appType","deviceName","browserName","app"})
-    @BeforeClass(alwaysRun = true)
+    @BeforeSuite(alwaysRun = true)
     public void setUp(String platformName, String appType, String deviceName, @Optional("") String browserName, @Optional("") String app) throws Exception {
         System.out.println("Before: app type - "+appType);
         setAppiumDriver(platformName, deviceName, browserName, app);
@@ -34,9 +31,8 @@ public class BaseTest implements IDriver {
 
     }
 
-    @Parameters({"platformName"})
-    @AfterClass(alwaysRun = true)
-    public void tearDown(String platformName) throws Exception {
+    @AfterSuite(alwaysRun = true)
+    public void tearDown() throws Exception {
         System.out.println("After");
         appiumDriver.closeApp();
     }
