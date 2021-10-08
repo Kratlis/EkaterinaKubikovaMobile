@@ -2,8 +2,8 @@ package scenarios;
 
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-import pageObjects.nativeApp.LoginPageObject;
-import pageObjects.nativeApp.RegistrationPageObject;
+import pageobjects.nativeapp.LoginPageObject;
+import pageobjects.nativeapp.RegistrationPageObject;
 import setup.BaseTest;
 import utils.NativeInitProperties;
 

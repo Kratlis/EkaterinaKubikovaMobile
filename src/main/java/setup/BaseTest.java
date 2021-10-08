@@ -10,7 +10,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageObjects.PageObject;
+import pageobjects.PageObject;
 
 public class BaseTest implements IDriver {
 

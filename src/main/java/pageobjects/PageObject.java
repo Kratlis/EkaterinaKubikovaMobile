@@ -1,10 +1,10 @@
-package pageObjects;
+package pageobjects;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pageObjects.nativeApp.LoginPageObject;
-import pageObjects.web.StartPageObject;
+import pageobjects.nativeapp.LoginPageObject;
+import pageobjects.web.StartPageObject;
 import setup.IPageObject;
 
 public class PageObject implements IPageObject {

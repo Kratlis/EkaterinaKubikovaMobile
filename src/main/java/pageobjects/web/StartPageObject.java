@@ -1,4 +1,4 @@
-package pageObjects.web;
+package pageobjects.web;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Keys;

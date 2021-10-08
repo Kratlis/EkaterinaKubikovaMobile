@@ -1,16 +1,14 @@
-package pageObjects.nativeApp;
+package pageobjects.web;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import pageObjects.PageObject;
-import setup.IPageObject;
 
-public abstract class NativePageObject extends PageObject {
+public abstract class WebPageObject {
+
     protected AppiumDriver driver;
 
-    public NativePageObject(AppiumDriver appiumDriver) {
+    public WebPageObject(AppiumDriver appiumDriver) {
         driver = appiumDriver;
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }

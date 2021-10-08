@@ -1,10 +1,10 @@
-package pageObjects.nativeApp;
+package pageobjects.nativeapp;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 
-public class RegistrationPageObject extends NativePageObject{
+public class RegistrationPageObject extends NativePageObject {
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_email")
     WebElement regEmailFiled;

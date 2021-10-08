@@ -3,10 +3,9 @@ package scenarios;
 import java.util.stream.Collectors;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import pageObjects.web.SearchResultsPageObject;
-import pageObjects.web.StartPageObject;
+import pageobjects.web.SearchResultsPageObject;
+import pageobjects.web.StartPageObject;
 import setup.BaseTest;
 import utils.WebInitProperties;
 
@@ -30,9 +29,9 @@ public class WebMobileTests extends BaseTest {
         SoftAssertions softAssertions = new SoftAssertions();
         for (String link : resultsPageObject.getSearchResultsLinks()
                                             .stream().limit(WebInitProperties.LINKS_LIMIT)
-                                            .collect(Collectors.toList())){
+                                            .collect(Collectors.toList())) {
             softAssertions.assertThat(link)
-                .containsIgnoringCase(WebInitProperties.KEY_WORD);
+                          .containsIgnoringCase(WebInitProperties.KEY_WORD);
         }
         softAssertions.assertAll();
 
