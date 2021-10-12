@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Android web mobile testing Suite for EPAM Mobile Cloud">
+  <parameter name="appType" value="web"/>
+  <parameter name="deviceName" value="Samsung SM-G950F"/>
+  <parameter name="platformName" value="Android"/>
+  <parameter name="browserName" value="Chrome"/>
+  <test name="Android Cloud Web tests">
+    <groups>
+      <run>
+        <include name="web"/>
+      </run>
+    </groups>
+
+    <packages>
+      <package name="scenarios"/>
+    </packages>
+  </test>
+</suite>

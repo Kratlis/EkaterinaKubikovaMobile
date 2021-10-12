@@ -22,7 +22,7 @@ public class NativeMobileTests extends BaseTest {
             .openBudgetActivityPage()
             .getTitle();
         Assertions.assertThat(budgetPageTitle)
-                  .isEqualTo(NativeInitProperties.BUDGET_PAGE_TITLE);
+                  .contains(NativeInitProperties.BUDGET_PAGE_TITLE);
         System.out.println("Simplest Android native test done");
     }
 }

@@ -1,6 +1,5 @@
 package utils;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Properties;
 
