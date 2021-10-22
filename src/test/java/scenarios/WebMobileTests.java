@@ -26,7 +26,7 @@ public class WebMobileTests extends BaseTest {
                   .isNotNull();
 
         Assertions.assertThat(resultsPageObject.getSearchResultsLinks()
-                                               .stream().limit(WebInitProperties.LINKS_LIMIT)
+                                               .stream()
                                                .filter(link -> link.toLowerCase(Locale.ROOT)
                                                                    .contains(WebInitProperties.KEY_WORD))
                       .count())
