@@ -10,7 +10,6 @@ public class StartPageObject extends WebPageObject {
     @FindBy(tagName = "input")
     private WebElement searchField;
 
-
     public StartPageObject(AppiumDriver appiumDriver) {
         super(appiumDriver);
     }

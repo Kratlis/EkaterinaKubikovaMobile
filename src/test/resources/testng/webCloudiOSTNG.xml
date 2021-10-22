@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="iOS web mobile testing Suite for EPAM Mobile Cloud">
+  <parameter name="appType" value="web"/>
+  <parameter name="udid" value="00008020-001229620CD3002E"/>
+  <parameter name="platformName" value="iOS"/>
+  <parameter name="browserName" value="Safari"/>
+  <test name="iOS Cloud Web tests">
+    <groups>
+      <run>
+        <include name="web"/>
+      </run>
+    </groups>
+
+    <packages>
+      <package name="scenarios"/>
+    </packages>
+  </test>
+</suite>
