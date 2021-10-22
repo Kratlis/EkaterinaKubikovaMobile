@@ -8,6 +8,18 @@
     <artifactId>mobileTaTrainingV2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <assertj-core.version>3.20.2</assertj-core.version>
+        <checkstyle.version>8.42</checkstyle.version>
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <resources.dir>./src/test/resources</resources.dir>
+        <web.testng.file>${resources.dir}/testng/webTNG.xml</web.testng.file>
+        <native.testng.file>${resources.dir}/testng/nativeTNG.xml</native.testng.file>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
@@ -19,10 +31,48 @@
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
         </dependency>
+
+        <dependency>
+            <artifactId>assertj-core</artifactId>
+            <groupId>org.assertj</groupId>
+            <version>${assertj-core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <configuration>
+                    <configLocation>
+                        <!--  pay attention to use exact url for checkstyle plugin ruleset  -->
+                        https://raw.githubusercontent.com/DmitryKhodakovsky/epam-training-center-code-checkers-configurations/main/checkstyle/checkstyle.xml
+                    </configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <failsOnError>true</failsOnError>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <artifactId>checkstyle</artifactId>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -40,8 +90,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -54,7 +104,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/nativeTNG.xml</suite.file>
+                <suite.file>${native.testng.file}</suite.file>
             </properties>
         </profile>
 
@@ -64,7 +114,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>${web.testng.file}</suite.file>
             </properties>
         </profile>
     </profiles>
