@@ -2,8 +2,11 @@ package setup;
 
 import io.appium.java_client.AppiumDriver;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
@@ -74,9 +77,9 @@ public class BaseTest implements IDriver {
         capabilities.setCapability("bundleId", bundleId);
         try {
             appiumDriver = new AppiumDriver(new URL(
-                String.format(System.getProperty("ts.appium"), TestInitProperties.TOKEN.replace("/", "%2f"))
+                String.format(System.getProperty("ts.appium"), URLEncoder.encode(TestInitProperties.TOKEN, StandardCharsets.UTF_8.toString()))
             ), capabilities);
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 

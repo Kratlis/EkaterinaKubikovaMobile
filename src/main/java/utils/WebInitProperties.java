@@ -3,8 +3,7 @@ package utils;
 import java.util.Properties;
 
 public class WebInitProperties {
-    public static final String WEB_PROPERTY_FILE = "src/test/resources/web.properties";
-    public static final Properties WEB_PROPERTIES = PropertyFileReader.init(WEB_PROPERTY_FILE);
+    public static final Properties WEB_PROPERTIES = PropertyFileReader.init("src/test/resources/web.properties");
 
     public static final String START_URL = WEB_PROPERTIES.getProperty("start.url");
     public static final String START_TITLE = WEB_PROPERTIES.getProperty("start.title");
